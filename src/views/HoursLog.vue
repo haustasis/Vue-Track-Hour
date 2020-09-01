@@ -7,7 +7,11 @@
             <h1>Hours</h1>
           </b-col>
           <b-col>
-            <b-btn variant="primary">+ Add Entry</b-btn>
+            <b-btn
+              variant="primary"
+              @click="$router.push({ name: 'TimeEntry' })"
+              >+ Add Entry</b-btn
+            >
           </b-col>
         </b-row>
         <b-row>
@@ -31,10 +35,10 @@ export default {
           project_name: "Company #1",
           date: "May 12, 2020",
           start_time: "7:00 am",
-          end_time: "11:00 am",
-        },
-      ],
+          end_time: "11:00 am"
+        }
+      ]
     };
-  },
+  }
 };
 </script>

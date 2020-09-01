@@ -11,16 +11,18 @@
           <b-col>
             <b-form @submit="onSubmit" @reset="onReset">
               <b-form-group
+                id="input-group-1"
+                label="Start Date:"
+                label-for="input-1"
+              >
+                <date-picker v-model="formData.startDate" type="datetime" />
+              </b-form-group>
+              <b-form-group
                 id="input-group-2"
-                label="Your Name:"
+                label="End Date:"
                 label-for="input-2"
               >
-                <b-form-input
-                  id="input-2"
-                  b-model="formData.name"
-                  required
-                  placeholder="Enter name"
-                ></b-form-input>
+                <date-picker v-model="formData.endDate" type="datetime" />
               </b-form-group>
 
               <b-button type="submit" variant="primary">Submit</b-button>
@@ -38,7 +40,10 @@ export default {
   name: "TimeEntry",
   data() {
     return {
-      formData: {}
+      formData: {
+        startDate: {},
+        endDate: {}
+      }
     };
   },
   methods: {

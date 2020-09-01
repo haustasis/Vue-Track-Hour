@@ -41,6 +41,8 @@
     "update:vue-devtools": "rimraf ./node_modules/nw-vue-devtools-prebuilt && npm install"
   },
   "dependencies": {
+    "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.16.0",
     "express": "^4.17.1"
   },
   "devDependencies": {

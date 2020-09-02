@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "HoursLog",
   components: {},
@@ -39,6 +40,12 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.readTimeEntries();
+  },
+  methods: {
+    ...mapActions(["readTimeEntries"])
   }
 };
 </script>

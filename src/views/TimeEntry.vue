@@ -36,18 +36,22 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "TimeEntry",
   data() {
     return {
       formData: {
-        startDate: {},
-        endDate: {}
+        startDate: "",
+        endDate: ""
       }
     };
   },
   methods: {
-    onSubmit() {},
+    ...mapActions(["createTimeEntry"]),
+    onSubmit() {
+      this.createTimeEntry(this.formData);
+    },
     onReset() {}
   }
 };

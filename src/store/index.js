@@ -16,12 +16,14 @@ export default new Vuex.Store({
   },
   mutations: {
     setTimeEntries(state, payload) {
-      state.timeEntries = payload;
+      state.timeEntries = payload.map(entry => {
+        return entry.doc;
+      });
     }
   },
   actions: {
     async readTimeEntries({ commit }) {
-      const docs = await timeEntriesDB.allDocs();
+      const docs = await timeEntriesDB.allDocs({ include_docs: true });
       commit("setTimeEntries", docs.rows);
     },
     async createTimeEntry({}, payload) {

@@ -16,7 +16,7 @@
         </b-row>
         <b-row>
           <b-col>
-            <b-table striped hover :items="items"></b-table>
+            <b-table striped hover :fields="fields" :items="timeEntries" />
           </b-col>
         </b-row>
       </b-col>
@@ -25,21 +25,17 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   name: "HoursLog",
   components: {},
   data() {
     return {
-      items: [
-        {
-          project_name: "Company #1",
-          date: "May 12, 2020",
-          start_time: "7:00 am",
-          end_time: "11:00 am"
-        }
-      ]
+      fields: ["startDate", "endDate"]
     };
+  },
+  computed: {
+    ...mapState(["timeEntries"])
   },
   mounted() {
     this.readTimeEntries();

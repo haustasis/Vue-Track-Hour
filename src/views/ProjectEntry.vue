@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "ProjectEntry",
   data() {
@@ -66,7 +67,11 @@ export default {
     };
   },
   methods: {
-    onSubmit() {},
+    ...mapActions(["createProject"]),
+    onSubmit(e) {
+      e.preventDefault();
+      this.createProject(this.formData);
+    },
     onReset() {}
   }
 };

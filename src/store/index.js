@@ -41,6 +41,7 @@ export default new Vuex.Store({
       try {
         const res = await projectsDB.put({ _id: uuidv4(), ...payload });
         console.log("success", res);
+        router.push({ name: "Projects" });
       } catch (err) {
         console.error(err);
       }

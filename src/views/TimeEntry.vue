@@ -49,7 +49,8 @@ export default {
   },
   methods: {
     ...mapActions(["createTimeEntry"]),
-    onSubmit() {
+    onSubmit(e) {
+      e.preventDefault();
       this.createTimeEntry(this.formData);
     },
     onReset() {}

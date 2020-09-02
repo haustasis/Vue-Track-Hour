@@ -3,6 +3,8 @@ import Vuex from "vuex";
 import PouchDB from "pouchdb";
 import { v4 as uuidv4 } from "uuid";
 
+import router from "../router";
+
 var timeEntriesDB = new PouchDB("timeEntries");
 var projectsDB = new PouchDB("projects");
 // PouchDB.debug.enable("*");
@@ -30,6 +32,7 @@ export default new Vuex.Store({
       try {
         const res = await timeEntriesDB.put({ _id: uuidv4(), ...payload });
         console.log("success", res);
+        router.push({ name: "HoursLog" });
       } catch (err) {
         console.error(err);
       }

@@ -24,3 +24,19 @@
     </b-row>
   </b-container>
 </template>
+
+<script>
+import { mapActions, mapState } from "vuex";
+export default {
+  name: "Projects",
+  computed: {
+    ...mapState(["projects"])
+  },
+  mounted() {
+    this.readProjects();
+  },
+  methods: {
+    ...mapActions(["readProjects"])
+  }
+};
+</script>

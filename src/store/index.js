@@ -21,12 +21,17 @@ export default new Vuex.Store({
       state.timeEntries = payload.map(entry => {
         return entry.doc;
       });
+    },
+    setProjects(state, payload) {
+      state.projects = payload.map(entry => {
+        return entry.doc;
+      });
     }
   },
   actions: {
     async readTimeEntries({ commit }) {
       const docs = await timeEntriesDB.allDocs({ include_docs: true });
-      commit("setTimeEntries", docs.rows);
+      commit("setTimeEntries", docs.rows || []);
     },
     async createTimeEntry({}, payload) {
       try {
@@ -36,6 +41,10 @@ export default new Vuex.Store({
       } catch (err) {
         console.error(err);
       }
+    },
+    async readProjects({ commit }) {
+      const docs = await projectsDB.allDocs({ include_docs: true });
+      commit("setProjects", docs.rows);
     },
     async createProject({}, payload) {
       try {
